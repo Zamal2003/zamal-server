@@ -15,10 +15,8 @@ app.use(express.json()); // Middleware to parse JSON
 // CORS setup to allow frontend requests
 app.use(
   cors({
-    origin: ["https://tabrez-admin.vercel.app/signin.html", "https://tabrez-form.vercel.app"], // Open to all origins (for dev). Change this to frontend URL in production.
+    origin: ["*"], // Open to all origins (for dev). Change this to frontend URL in production.
     methods: ["GET", "POST", "PUT", "DELETE"],
-
-    credentials: true
   })
 );
 app.use(bodyParser.json());
