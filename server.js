@@ -4,6 +4,12 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 
+app.use(
+  cors({
+    origin: ["*"], // Open to all origins (for dev). Change this to frontend URL in production.
+    methods: ["GET", "POST", "PUT", "DELETE"],
+  })
+);
 const Observation = require("./models/Observation");
 const authRoutes = require("./routes/authRoutes");
 const app = express();
@@ -13,12 +19,6 @@ app.use(express.json()); // Middleware to parse JSON
 
 // Middleware
 // CORS setup to allow frontend requests
-app.use(
-  cors({
-    origin: ["*"], // Open to all origins (for dev). Change this to frontend URL in production.
-    methods: ["GET", "POST", "PUT", "DELETE"],
-  })
-);
 app.use(bodyParser.json());
 
 // Routes
